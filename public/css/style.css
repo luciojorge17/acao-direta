@@ -243,6 +243,12 @@ tr:hover {
     background-color: #f1f5f9;
 }
 
+.empty-state {
+    text-align: center;
+    padding: 3rem !important;
+    color: var(--text-muted);
+}
+
 /* Modal */
 .modal-backdrop {
     position: fixed;
