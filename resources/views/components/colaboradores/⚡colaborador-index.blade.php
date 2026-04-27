@@ -174,8 +174,8 @@ new class extends Component {
                 </tbody>
             </table>
         </div>
-        <div class="mt-4">
-            {{ $colaboradores->links() }}
+        <div class="pagination-wrapper">
+            {{ $colaboradores->links('vendor.pagination.custom') }}
         </div>
     </div>
 
