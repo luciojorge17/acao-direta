@@ -29,7 +29,11 @@ class RelatorioController extends Controller
             $query->whereDate('datahora', '<=', $data_fim);
         }
 
-        $pontos = $query->orderBy('datahora', 'asc')->get();
+        $pontos = $query->join('colaboradores', 'pontos.colaborador_id', '=', 'colaboradores.id')
+                        ->select('pontos.*')
+                        ->orderBy('colaboradores.nome', 'asc')
+                        ->orderBy('pontos.datahora', 'asc')
+                        ->get();
         $colaborador = $colaborador_id ? Colaborador::find($colaborador_id) : null;
 
         $pdf = Pdf::loadView('relatorios.pdf', [

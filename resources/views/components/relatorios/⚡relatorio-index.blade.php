@@ -45,8 +45,10 @@ new class extends Component
             $query->whereDate('datahora', '<=', $this->data_fim);
         }
 
-        $pontos = $query->orderBy('colaborador_id')
-                        ->orderBy('datahora', 'asc')
+        $pontos = $query->join('colaboradores', 'pontos.colaborador_id', '=', 'colaboradores.id')
+                        ->select('pontos.*')
+                        ->orderBy('colaboradores.nome', 'asc')
+                        ->orderBy('pontos.datahora', 'asc')
                         ->get();
 
         return [
